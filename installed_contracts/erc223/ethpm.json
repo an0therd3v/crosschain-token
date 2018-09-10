@@ -1,0 +1,24 @@
+{
+  "authors": [],
+  "license": "MIT",
+  "description": "ERC223-token-standard",
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "tokens"
+  ],
+  "links": {},
+  "sources": [
+    "./contracts/ERC223_interface.sol",
+    "./contracts/ERC223_receiving_contract.sol",
+    "./contracts/ERC223_token.sol"
+  ],
+  "dependencies": {
+    "zeppelin": "ipfs://QmaCaDgbXgTJXdt8JRU46R59sH4UwnDHiAopdbndEDGqxV"
+  },
+  "manifest_version": 1,
+  "package_name": "erc223",
+  "version": "0.0.3"
+}
