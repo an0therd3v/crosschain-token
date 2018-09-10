@@ -214,6 +214,7 @@ contract CrosschainToken is Ownable, StandardToken {
 
     // if number of votes meets threshold, finalize transfer
     if (transfersIn[chainTransactionHash].votes >= transferVotesThreshold){
+      transfersIn[chainTransactionHash].validated = true;
       tokensOnChain = tokensOnChain.add(amount);
       balances[destinationAddress] = balances[destinationAddress].add(amount);
 
@@ -239,6 +240,7 @@ contract CrosschainToken is Ownable, StandardToken {
     address destinationAddress,
     uint256 amount
   ) private view {
+    require(!xchainTransaction.validated);            // not already validated by this validator
     require(!isValidatedBy[chainTransactionHash][msg.sender]);            // not already validated by this validator
     require(xchainTransaction.sourceChain == sourceChain);
     require(xchainTransaction.transactionHash == transactionHash);
