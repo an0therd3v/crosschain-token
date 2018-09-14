@@ -1,6 +1,21 @@
 # crosschain-token
-### Solution
+## Contents
+solidity smart contract for token with mechanism to transfer to another solidity chain
+
+Demo interface web3 driver in reactjs
+## Problem
+Propose and implement a set of smart contracts that allow transfer of tokens between
+Ethereum and another major blockchain of your choice. Your proposed system should meet
+the following constraints:
+* \# of issued tokens = sum (# of accessible tokens on Ethereum) + sum(# of accessible
+tokens on 2 nd chain), i.e. no double spending
+* Token exchange will take O(1) speed, i.e. will take roughly same time regardless of
+what point of time it is initiated
+* … all the security guarantees of a normal Ethereum transaction
+### Proposed Solution
 The presented problem largely relies on availability of communication between two chains.
+
+A crosschain atomic swap solution cannot work due to having only a single party requesting a transfer. If two parties were looking to make a trade a simple crosschain atomic swap would work.
 
 If two chains were able to pass validated data back and forth, a contract can be created to allow the transfer of tokens from one chain to another, but that is not possible as of today.
 
@@ -18,7 +33,7 @@ After a certain amount of validators have voted and a set threshold is met, the 
 
 In this solution, we can mitigate potential of a single validator becoming compromised. Further incentives can be provided to keep the validators honest such as staking and validation rewards. Also, by setting a threshold of n out m validators as threshold for finalizing a transfer we prevent downtime caused by a 1 or more validator being offline in the case of n out n validators required to finalize a transfer.
 
-For simplicity and demo purposes, the solution provided here is a single solidity contract that can be deployed to different EVM chains. This particular prototype uses a single chain of your choice, and deploys to contracts, where a single account assumes all roles, U1, U2 and validator.
+For simplicity and demo purposes, the solution provided here is a single solidity contract that can be deployed to different EVM chains. This particular prototype uses a single chain of your choice, and deploys two contracts, where a single account assumes all roles, U1, U2 and validator.
 
 Assumptions:
 * A single user facilitates need to transfer, without a second counterparty, preventing the ability to implement a two user crosschain atomic swap
